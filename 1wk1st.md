@@ -2,6 +2,7 @@
 
 ### HTTP(Hypertext Transfer Protocol)
 * __무상태 프로토콜__ ~> 각각의 요청이 독립적/즉 *항상* 누구인지 인지시켜줘야함
+## stateless와 stateful
 * 이를 위해 쿠키, 세션, 로컬 스토리지 등을 이용 
 * 쿠키/세션 
     + __쿠키__는 클라이언트(브라우저) 로컬에 저장되는 키와 값이 들어있는 작은 데이터 파일.
@@ -20,14 +21,13 @@
   ~> tls를 거쳐서 바로 http를 사용
     
 #### HTTP와 HTTPS의 차이(TLS)
+* HTTPS를 사용한 웹 페이지를 통해 전송되는 모든 데이터는 추가적인 보안 계층이 존재. 암호화 추가됨.
+* 이것이 TLS(전송계층보안) 프로토콜이라 함. 443번 포트 사용.
   
 #### 클라이언트-서버 모델:
     클라이언트 -> 요청하는 역
     서비스/리소스 -> 공급하는 쪽(html 하이퍼미디어 형태로 문서 전송)
 
-
-#### stateless와 stateful
-*  HTTP Cookie와 HTTP Session
 
 #### HTTP 메시지
 * HTTP 메시지: *트랜젝션*을 통해 서로 주고받음
@@ -51,10 +51,14 @@
           - POST는 Create
           - PUT는 바꿔치기(Overwrite/전체 업데이트)
           - PATCH는 Update(부분적 업데이트)
+          - OPTIONS ~> CRUD중 뭐가 가능한지 등...
         - HEAD ~> 바디 없이 헤더만 얻기(권한 등)
         - 멱등성
           - 같은 행동을 여러번해도 동일성 보장(GET등) 
           - POST는 멱등성을 보장하지 않음
     - HTTP 응답 상태 코드(HTTP response status code)
         - 1XX, 2XX, 3XX, 4XX...
+          - 1xx -> 정보성 / 직접 쓰는 일 드뭄(자세한 건 책)
+          - 304 not modified ~> 캐시 등을 써서 바뀐 것이 없을때 보통 보임
+          - 5XX -> 서버에러
         - 리다이렉션
