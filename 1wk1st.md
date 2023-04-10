@@ -2,7 +2,7 @@
 
 ### HTTP(Hypertext Transfer Protocol)
 * __무상태 프로토콜__ ~> 각각의 요청이 독립적/즉 *항상* 누구인지 인지시켜줘야함
-## stateless와 stateful
+#### stateless와 stateful
 * 이를 위해 쿠키, 세션, 로컬 스토리지 등을 이용 
 * 쿠키/세션 
     + __쿠키__는 클라이언트(브라우저) 로컬에 저장되는 키와 값이 들어있는 작은 데이터 파일.
