@@ -26,20 +26,28 @@
 3. Accept, 서버는 접속 요청 받아서 통신 소켓 새로 생성
 4. Send&Recive, 데이터 주고받음 (여러번 가능)
 5. Close, 소켓 닫음(recieve로 인지)
+* 단 JAVA Socket은 host, port만 알면 됨(2,3번 과정 알아서)
+  * OutputStream or OutputStreamWriter을 많이 씀
+  * Chunk -> 한 번에 처리하는 단위
 
 
 ### Http client
 * 위의 2, 4, 5번 처리
-
-15분
   
-- URI와 URL
-- 호스트(host)
-    - IP 주소
-    - Domain name
-    - DNS
-- 포트(port)
-- path(경로)
-- Java text blocks
-- Java InputStream과 OutputStream
-- Java try-with-resources
+  
+### URI와 URL
++ _URI는 식별하고, URL은 위치를 가르킨다._
+![URL URL](https://www.charlezz.com/wordpress/wp-content/uploads/2021/03/www.charlezz.com-uri-url-uri-vs-url.png)
+
+- header 작성 시 example.com뒤에 / 슬래시 붙이는게 원칙이긴함.
+- GET http://example.com/ HTTP/1.1 형태
+- 호스트(host) : IP를 가진 양방향 통신이 가능한 컴퓨터
+  - IP 주소
+  - Domain name : 호스트명. 웹주소라 생각하면됨
+  - DNS : Domain Name System ~> IP주소<->도메인으로 바꿔주는 데이터베이스 시스템. 네임서버임
+    + 주소.com을 입력
+    + 주소.com을 가지고 있는 네임 서버에 접속
+    + IP 주소를 확인
+    + IP 주소를 전달
+    + IP 주소를 가진 서버로 접속
+    + 연결된 브라우저 실행

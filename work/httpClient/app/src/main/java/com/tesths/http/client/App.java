@@ -3,8 +3,57 @@
  */
 package com.tesths.http.client;
 
+import java.io.*;
+import java.net.*;
+import java.nio.*;
+
 public class App {
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+    public static void main(String[] args) throws IOException {
+        App app = new App();
+        app.run();
+    }
+
+    private void run() throws IOException {
+        System.out.println("Hello world");
+
+        //1. connect
+        Socket socket = new Socket("example.com", 80);
+        System.out.println("connect");
+
+        String message = "GET / HTTP/1.1\n" +
+                "Host: example.com \n" +
+                "\n";
+
+        // 2. request
+        OutputStream outputStream = socket.getOutputStream();
+        Writer writer = new OutputStreamWriter(outputStream);
+        // outputStream.write(message.getBytes(StandardCharsets.UTF_8));
+        writer.write(message);
+        writer.flush();
+
+        // 3. response
+        InputStream inputStream = socket.getInputStream();
+        Reader reader = new InputStreamReader(inputStream);
+
+        CharBuffer charBuffer = CharBuffer.allocate(1_000_000);
+
+        reader.read(charBuffer);
+
+        /* 그냥 inputstream과 달리 charbuffer은 알아서 잘라줌 */
+        charBuffer.flip();
+
+        System.out.println("Request Sent");
+
+//        byte[] bytes = new byte[1_000_000];
+//        int size = inputStream.read(bytes);
+
+//        byte[] data = Arrays.copyOf(bytes, size);
+
+//        String text = new String(data);
+        String text = charBuffer.toString();
+        System.out.println(text);
+
+        // 4. close
+        socket.close();
     }
 }
