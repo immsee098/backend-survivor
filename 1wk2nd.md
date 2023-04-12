@@ -1,4 +1,4 @@
-# 1주차 - 2강 
+# 1주차 - 2강 HTTP Client
 
 ### TCP/IP 통신
 * __인터넷 프로토콜 스위트__: 인터넷에서 컴퓨터들이 서로 정보를 주고받는데 사용하는 프로토콜 모음. 
@@ -29,6 +29,9 @@
 * 단 JAVA Socket은 host, port만 알면 됨(2,3번 과정 알아서)
   * OutputStream or OutputStreamWriter을 많이 씀
   * Chunk -> 한 번에 처리하는 단위
+  * Java - Try-with-resource
+    + try(...)에서 선언된 객체들에 대해서 try가 종료될 때 자동으로 자원을 해제해주는 기능
+    + socket 연 걸 자동 close()해준다거나 
 
 
 ### Http client
