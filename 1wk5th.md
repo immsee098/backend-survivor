@@ -1,13 +1,21 @@
 # 1주차 - 5강 spring web mvc
 
-### HTTP(Hypertext Transfer Protocol)
-* __무상태 프로토콜__ ~> 각각의 요청이 독립적/즉 *항상* 누구인지 인지시켜줘야함
-#### stateless와 stateful
-* 이를 위해 쿠키, 세션, 로컬 스토리지 등을 이용 
-* 쿠키/세션 
-    + __쿠키__는 클라이언트(브라우저) 로컬에 저장되는 키와 값이 들어있는 작은 데이터 파일.
-    + __세션__은 쿠키를 기반하고 있지만, 사용자 정보 파일을 브라우저에 저장하는 쿠키와 달리 세션은 서버 측에서 관리.
-    + 보통 세션의 key는 쿠키로 관리함(accessToken 등)
+- [Spring](https://docs.spring.io/spring-framework/docs/current/reference/html/overview.html#overview)(링크된 문서에서 핵심을 캐치할 것, 괴롭지만 한 번은 해내야 함)
+- Spring Boot
+- Spring initializer
+- Web Server와 Web Application Server(WAS)
+    - Tomcat
+- Model-View-Controller(MVC) 아키텍처 패턴
+- 관심사의 분리(Seperation of Concern)
+- Spring MVC
+- Java Annotation
+- Spring Annotation
+    - @RestController
+        - @Controller
+        - @ResponseBody
+    - @GetMapping
+        - @RequestMapping
+
 
 #### HTTP이란? : 
 * HTML 등의 하이퍼미디어 문서를 전송하기 위한 애플리케이션 레이어(os 7계층) 프로토콜(규칙)
