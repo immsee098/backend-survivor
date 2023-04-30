@@ -10,20 +10,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
+//@CrossOrigin("https://seed2whale.github.io")
 public class PostController {
     private final ObjectMapper objectMapper;
+    private List<PostDTO> postsDtos = new ArrayList<>(List.of(
+            new PostDTO("1", "test1", "content"),
+            new PostDTO("2", "test2", "content")
+    ));
+
 
     public PostController(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
-    @GetMapping("/posts")
-    public List list() {
-        List<PostDTO> postsDtos = List.of(
-                new PostDTO("1", "test1", "content"),
-                new PostDTO("2", "test2", "content")
-        );
+//    @SupportedOptions()
+//    public options() {
+//
+//    }
 
+    @GetMapping("/posts")
+    public List list(
+            //HttpServletResponse response
+    ) {
+        //response.addHeader("Access-Control-Allow-Origin", "https://seed2whale.github.io");
         return postsDtos;
 
     }
@@ -41,12 +50,14 @@ public class PostController {
     }
 
     @PostMapping("/posts")
-    public String create(
-            @RequestBody(required = false) String body
+    public PostDTO create(
+            @RequestBody(required = false) PostDTO postDTO
     ) throws JsonProcessingException {
-        PostDTO postDTO = objectMapper.readValue(body, PostDTO.class);
-        return postDTO.getTitle();
+        postsDtos.add(new PostDTO("3", "제목", "생성3"));
+//        PostDTO postDTO = objectMapper.readValue(body, PostDTO.class);
+//        return postDTO.getTitle();
         // return "{\"action\" : \"게시물 생성\", \"body\" : \"\"}";
+        return postDTO;
     }
 
     @PatchMapping("/posts/{id}")
@@ -59,10 +70,17 @@ public class PostController {
     }
 
     @DeleteMapping("/posts/{id}")
-    public String delete(
+    public PostDTO delete(
             @PathVariable String id
     ) {
-        return "게시물 삭제:" + id;
+        PostDTO postDTO = postsDtos.stream()
+                .filter(i -> i.getId().equals(id))
+                .findFirst()
+                .get();
+
+        postsDtos.remove(postDTO);
+
+        return postDTO;
     }
 
 
