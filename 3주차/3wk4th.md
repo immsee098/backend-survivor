@@ -19,5 +19,5 @@
 * HttpServletResponse -> addHeader이용->요청하는 쪽의 Origin을 써주면됨
   * Origin에 * 해주면 모든 허용
 * 근데 이렇게 하나하나 하면 너무 번거로우니 __`@CrossOrigin`__ 사용
-* 
+
 
