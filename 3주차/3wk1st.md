@@ -1,7 +1,7 @@
 # 3주차 - 1강 DTO
 
 ### DTO (Data Transfer Object) 란?
-* -> 데이터 전송 객체
+* -> 데이터 전송 객체. 계층 간 데이터 교환을 목적
 * 프로세스 간 통신(__IPC__, Inter-Process Communication), remote하게 작업할 때
   * 서로 다른 프로그램 간 통신
   * BE와 FE를 나눌 때 필수적인 것

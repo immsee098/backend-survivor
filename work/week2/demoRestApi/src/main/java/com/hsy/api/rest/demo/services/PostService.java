@@ -1,34 +1,42 @@
 package com.hsy.api.rest.demo.services;
 
 import com.github.f4b6a3.tsid.*;
+import com.hsy.api.rest.demo.dao.*;
 import com.hsy.api.rest.demo.dtos.*;
-import com.hsy.api.rest.demo.exceptions.*;
 
 import java.util.*;
 
 public class PostService {
-    private List<PostDTO> postsDtos = new ArrayList<>(List.of(
-            new PostDTO("1", "test1", "content"),
-            new PostDTO("2", "test2", "content")
-    ));
+    private final PostDAO postsDtos;
+
+    public PostService(PostDAO postDAO) {
+        this.postsDtos = new PostListDAO();
+        // this.postsDtos = new PostMapDAO();
+    }
 
     public List getPosts() {
-        return postsDtos;
+        return postsDtos.findAll();
     }
 
     public PostDTO getPostDto(String id) {
-        return findPostDto(id);
+        return postsDtos.find(id);
     }
 
     public PostDTO createPost(PostDTO postDTO) {
         String id = TsidCreator.getTsid().toString();
-        postDTO.setId(id);
-        postsDtos.add(postDTO);
+
+        PostDTO newPostDto = new PostDTO();
+        newPostDto.setId(id);
+        newPostDto.setContent(postDTO.getContent());
+        newPostDto.setTitle(postDTO.getTitle());
+
+        postsDtos.save(newPostDto);
         return postDTO;
     }
 
     public PostDTO updatePost(String id, PostDTO postdto) {
-        PostDTO found = findPostDto(id);
+        PostDTO found = postsDtos.find(id);
+
         found.setTitle(postdto.getTitle());
         found.setContent(postdto.getContent());
 
@@ -36,15 +44,9 @@ public class PostService {
 
     }
 
-    private PostDTO findPostDto(String id) {
-        return postsDtos.stream().filter(postDTO -> postDTO.getId().equals(id))
-                .findFirst()
-                .orElseThrow(PostNotFound::new);
-    }
-
     public PostDTO deletePost(String id) {
-        PostDTO postDTO = findPostDto(id);
-        postsDtos.remove(postDTO);
+        PostDTO postDTO = postsDtos.find(id);
+        postsDtos.delete(id);
         return postDTO;
     }
 }
