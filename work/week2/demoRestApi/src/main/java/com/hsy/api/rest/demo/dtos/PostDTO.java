@@ -1,5 +1,7 @@
 package com.hsy.api.rest.demo.dtos;
 
+import com.hsy.api.rest.demo.models.*;
+
 public class PostDTO {
     private String id;
     private String content;
@@ -9,6 +11,10 @@ public class PostDTO {
         this.id = id;
         this.content = content;
         this.title = title;
+    }
+
+    public PostDTO(Post post) {
+        this(post.id().toString(), post.title(), post.content().toString());
     }
 
     public void setId(String id) {
