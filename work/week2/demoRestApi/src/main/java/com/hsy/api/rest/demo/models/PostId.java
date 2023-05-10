@@ -12,7 +12,7 @@ public class PostId {
     }
 
     public static String of(String id) {
-        return new PostId(id);
+        return new PostId(id).toString();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.hsy.api.rest.demo.controllers;
 
 import com.fasterxml.jackson.core.*;
-import com.fasterxml.jackson.databind.*;
 import com.hsy.api.rest.demo.dtos.*;
 import com.hsy.api.rest.demo.exceptions.*;
 import com.hsy.api.rest.demo.services.*;
@@ -13,12 +12,12 @@ import java.util.*;
 @RestController
 //@CrossOrigin("https://seed2whale.github.io")
 public class PostController {
-    private final ObjectMapper objectMapper;
+    private final GetPostDTOListService getPostDTOListService;
     private final PostService postService;
 
-    public PostController(ObjectMapper objectMapper) {
-        postService = new PostService();
-        this.objectMapper = objectMapper;
+    public PostController(GetPostDTOListService getPostDTOListService, PostService postService) {
+        this.getPostDTOListService = getPostDTOListService;
+        this.postService = postService;
     }
 
 //    @SupportedOptions()

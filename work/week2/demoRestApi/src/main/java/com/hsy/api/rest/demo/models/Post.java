@@ -19,6 +19,7 @@ public class Post {
         this.content = content;
     }
 
+
     public PostId id() {
         return id;
     }

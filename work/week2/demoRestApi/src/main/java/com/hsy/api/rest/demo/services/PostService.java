@@ -3,9 +3,11 @@ package com.hsy.api.rest.demo.services;
 import com.hsy.api.rest.demo.dtos.*;
 import com.hsy.api.rest.demo.models.*;
 import com.hsy.api.rest.demo.repository.*;
+import org.springframework.stereotype.*;
 
 import java.util.*;
 
+@Service
 public class PostService {
     //    private final PostDAO postsDtos;
     private final PostRepository postRepository;
@@ -26,7 +28,8 @@ public class PostService {
 //        List<Post> post = postRepository.findAll();
 //        return post.stream().map(post -> new PostDTO(post)).toList()
 //        return postsDtos.find(id);
-        Post post = postRepository.find(PostId.of(id));
+//        Post post = postRepository.find(PostId.of(id));
+        this.postDAO = factory.getPostDAO("list");
 
         return new PostDTO(post);
 
