@@ -8,25 +8,27 @@
 4. 모듈 설계 → 저수준 설계 ⇒ 단위 테스트 (개발자용)
 5. 구현 → 코딩
   
-- Test Matrix
-- 내적 품질(테스트 코드 작성등)을 높이면 좋은 이유
-- JUnit
+### Test Matrix
+* 내부 품질 vs 외부 품질
+  * 외부 품질: 겉으로 보이는 기능이 잘 돌아가는지
+  * 내부 품질: 안에서 돌아가는 것이 얼마나 괜찮은지. 당장의 성과가 크게 나지는 않음.
+    * 클린코드
+* test를 할 때는 많은 관점에서 접근해야함. 사용자 측? 개발자 측? 이걸 고려하는 게 test matrix
+* 내부 품질을 올리면 좋은 이유: 생산성, 확장성이 높아짐
+
+
+### JUnit
+* 자동화 테스트용 -> 통테, 단위테스트 다 가능함
+* __단위 테스트__
+  * 작은 모듈이나 클래스 등의 기준(부품)
+* __E2E 테스트__
+  * 애플리케이션을 a-z까지 테스트하는 것
+
+
+* @BeforeEach
+  * 특정 테스트 시작 전 항상 먼저 실행해줌
+
+
+
 - 단위 테스트
 - E2E 테스트
-
-### 3계층
-* Presentation - UI
-* Domain - 문제 영역에 대한 것
-* Data
-[3계층](https://martinfowler.com/bliki/images/presentationDomainDataLayering/all_more.png)
-
-### DAO(Data Access Object)
-* __DataBase__에 접근 하기 위한 로직 & 비지니스 로직을 분리하기 위해 사용.
-* 생성 시 캡슐화가 깨지지 않도록 외부로 return 하는 건 new로 새로 생성해서 보냄
-  * ex)return new ArrayList<>(postsDtos)
-
-
-### DAO와 Service의 차이
-* DAO는 단일 데이터 접근/갱신만 처리. Service는 여러 DAO를 호출하여 여러번의 데이터 접근/갱신을 하며 그렇게 읽은 데이터에 대한 비즈니스 로직을 수행하고, 그것을 하나의(혹은 여러개의) 트랜잭션으로 묶는다. 
-* 트랜젝션은 Service 단위 
-
