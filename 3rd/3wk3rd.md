@@ -3,9 +3,10 @@
 ### Jackson ObjectMapper 
 * DTO <-(변환)-> JSON(문자열) 
 * writeValueAsString : Object to String
-- 
-- ObjectMapper
-- `@JsonProperty`
+* ObjectMapper
+* `@JsonProperty`
+  * key값 바꿔주는 것
+  * 비슷한 것으로 JsonNaming -> 전체dto를 camel-case로 바꿔준다거나 등. 
 
 #### Bean과 DI
 * Spring이 등록된 객체를 관리 ~> Bean이라 부름

@@ -36,4 +36,8 @@ public class PostId {
     public static PostId generate() {
         return new PostId(TsidCreator.getTsid().toString());
     }
+
+    public int compare(PostId other) {
+        return id.compareTo(other.id);
+    }
 }

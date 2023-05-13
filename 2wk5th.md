@@ -8,12 +8,14 @@
   * @DeleteMapping
   * @PathVariable
     * URI 변수를 받는 용도 
+
 * @RequestAttribute
   * request의 attribue를 가져옴
+
 * @RequestBody
   * body를 담아 보내야함
   * required false도 가능
-  * 
+
 * @ExceptionHandler
   * 컨트롤러 계층에서 나오는 예외를 잡아서 메서드로 처리해줌
   * Service, Repository에서 발생하는 에러는 제외 

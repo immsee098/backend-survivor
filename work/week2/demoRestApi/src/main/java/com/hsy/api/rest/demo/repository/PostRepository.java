@@ -10,12 +10,14 @@ public class PostRepository {
 
     public PostRepository() {
         this.posts = new HashMap<>();
-        this.posts.put(PostId.of("1"), new Post(PostId.of("1"), "test1", MultilineText.of("content")));
-        this.posts.put(PostId.of("2"), new Post(PostId.of("2"), "test2", MultilineText.of("content2")));
+        this.posts.put(PostId.of("1"), new Post(PostId.of("001"), "test1", MultilineText.of("content")));
+        this.posts.put(PostId.of("2"), new Post(PostId.of("002"), "test2", MultilineText.of("content2")));
     }
 
     public List<Post> findAll() {
-        return new ArrayList<>(posts.values());
+        return posts.values().stream()
+                .sorted((a, b) -> a.id().compare(b.id()))
+                .toList();
     }
 
     public Post find(String id) {
