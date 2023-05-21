@@ -21,6 +21,11 @@ public class App {
         String query = "SELECT * FROM people";
 
         ResultSet resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+
+            System.out.println(name);
+        }
 
 //        System.out.println(connection);
     }

@@ -1,3 +1,3 @@
-# 6주차 - 6강 JDBC
+# 6주차 - 6강 JdbcTemplate
 
 ### JdbcTemplate
